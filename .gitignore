@@ -3,3 +3,4 @@
 __pycache__/
 souris.py
 *.pyc
+local/*.duckdb

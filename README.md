@@ -67,6 +67,26 @@ Snowflake · Snowpipe · Storage Integration · GCS · Snowpark · Streamlit
 
 ---
 
+## 💻 Run it locally (no Snowflake account needed)
+
+The Snowflake scripts above target a real Snowflake + GCS setup. To let anyone reproduce the analytics, this repo also ships a **local DuckDB version** that mirrors the same transformations and the same dashboard:
+
+```bash
+pip install -r local/requirements.txt
+python local/build_duckdb.py     # runs the transformations + prints insights
+streamlit run local/app.py       # the interactive dashboard, locally
+```
+
+It loads [`local/data/transactions.csv`](local/data/transactions.csv) (schema `id, nom, valeur` — identical to the Snowflake `exemple_data` table) and rebuilds the per-customer aggregations.
+
+### 💡 Sample insights (from the local run)
+
+- Customers ranked by **total value** and **transaction count** (top customer stands out clearly)
+- **High-value transactions** (> 200) isolated for review
+- Average basket value per customer — a proxy for engagement
+
+---
+
 ## 📚 What this project demonstrates
 
 - Building a **cloud data lake** end to end
