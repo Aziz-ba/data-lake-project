@@ -13,9 +13,9 @@ A cloud **data lake** that ingests files landed in **Google Cloud Storage**, loa
    └──────────────┘                  └───────────────┘               └──────────────┘           └─────────────┘
 ```
 
-1. **Ingestion** — a Snowflake **storage integration** connects securely to a GCS bucket; files are auto-loaded with **Snowpipe** (event-driven) or via a manual pipeline.
-2. **Transformation** — SQL worksheets clean and reshape the raw data into curated tables.
-3. **Serving** — a **Streamlit** app queries Snowflake directly (via Snowpark session) and renders interactive visualizations.
+1. **Ingestion** - a Snowflake **storage integration** connects securely to a GCS bucket; files are auto-loaded with **Snowpipe** (event-driven) or via a manual pipeline.
+2. **Transformation** - SQL worksheets clean and reshape the raw data into curated tables.
+3. **Serving** - a **Streamlit** app queries Snowflake directly (via Snowpark session) and renders interactive visualizations.
 
 ---
 
@@ -44,9 +44,9 @@ CREATE OR REPLACE STORAGE INTEGRATION gcs_integration
   STORAGE_ALLOWED_LOCATIONS = ('gcs://<your-bucket>');
 ```
 
-**2. Auto-ingest with Snowpipe** — new files landing in the bucket flow straight into Snowflake tables.
+**2. Auto-ingest with Snowpipe** - new files landing in the bucket flow straight into Snowflake tables.
 
-**3. Visualize** — the Streamlit app opens the active Snowpark session and charts the curated data:
+**3. Visualize** - the Streamlit app opens the active Snowpark session and charts the curated data:
 ```python
 from snowflake.snowpark.context import get_active_session
 session = get_active_session()
@@ -77,13 +77,13 @@ python local/build_duckdb.py     # runs the transformations + prints insights
 streamlit run local/app.py       # the interactive dashboard, locally
 ```
 
-It loads [`local/data/transactions.csv`](local/data/transactions.csv) (schema `id, nom, valeur` — identical to the Snowflake `exemple_data` table) and rebuilds the per-customer aggregations.
+It loads [`local/data/transactions.csv`](local/data/transactions.csv) (schema `id, nom, valeur` - identical to the Snowflake `exemple_data` table) and rebuilds the per-customer aggregations.
 
 ### 💡 Sample insights (from the local run)
 
 - Customers ranked by **total value** and **transaction count** (top customer stands out clearly)
 - **High-value transactions** (> 200) isolated for review
-- Average basket value per customer — a proxy for engagement
+- Average basket value per customer - a proxy for engagement
 
 ---
 
